@@ -1,0 +1,19 @@
+Quantify bycatch around sites targeted by enrichment.
+
+usage: ./bycatch [-q MINQUAL] [-w WINDOWSIZE] -l loci.bed in.bam
+
+WINDOWSIZE (default=400), sites centered on the target locus are considered.
+MINQUAL (default=20), base quality and mapping quality threshold filter.
+
+
+For each of the target sites in the specified bed file, the following columns
+are printed:
+CHROM, POS, area, nonzero sites, target depth, max depth, mean, shape.
+
+area - sum of the depth counts for each site in the window around the target
+nonzero sites - number sites in the window with nonzero depth counts
+target depth - depth count at the target site
+max depth - maximum depth count within the window around the target
+mean - mean depth count within the window around the target
+shape - mean divided by number of nonzero sites; where a low number indicates
+	a wider/flatter pileup.
